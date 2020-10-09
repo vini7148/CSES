@@ -10,11 +10,13 @@ int main()
 {
     ll n, x;
     cin >> x >> n;
-    vector<ll> a;
+    // vector<ll> a;
 
     set<int> pt = {0, x};
+    
     multiset<int> lengths = {x};
     // a.push_back(x);
+    
     for (ll i = 0; i < n; i++)
     {
         ll temp;
@@ -34,6 +36,8 @@ int main()
         pt.insert(it, temp);
 
         cout << *lengths.rbegin() << " ";
+
+        // *lengths.end() - multi set is sorted 
 
         // sort(a.begin(), a.end());
 

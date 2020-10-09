@@ -17,7 +17,7 @@ int main()
     {
         cin >> a[i].first >> a[i].second;
         if (ma < a[i].second)
-            ma - a[i].second;
+            ma = a[i].second;
     }
 
     sort(a.begin(), a.end());

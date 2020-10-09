@@ -10,7 +10,9 @@ int main()
 {
     ll n;
     cin >> n;
+
     vector<ll> a(n);
+
     for (int i = 0; i < n; i++)
         cin >> a[i];
 
@@ -25,6 +27,8 @@ int main()
         cout << st + 1 << " ";
 
         // cout << lower_bound(a.begin(), a.begin() + i + 1, a[i]) - a.begin() << " ";
+
+        // -a.begin() pe int return 
     }    
     cout << "\n";
 }
