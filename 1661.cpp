@@ -1,4 +1,4 @@
-// https://cses.fi/problemset/task/1660/
+// https://cses.fi/problemset/task/1661/
 
 #include <bits/stdc++.h>
 
