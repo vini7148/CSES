@@ -24,24 +24,40 @@ int main()
  
     ll curr = 0, ans = 0;
  
-    while(k--)
+    for (int i = 0; i < k; i++)
     {
         curr = 0;
-        // (╯°□°）╯︵ ┻━┻
-        for (auto ptr = time.begin(); ptr < time.end(); ptr++)
+        for (auto ele : time)
         {
-            pair<ll, ll> tem = *ptr;
-            if (tem.second >= curr)
+            if (ele.second >= curr)
             {
-                curr = tem.first;
+                curr = ele.first;
                 ans++;
                 
                 // remove this element
                 
-                time.erase(ptr);
+                time.erase(find(time.begin(), time.end(), ele));
             }
         }
     }// (╯°□°）╯︵ ┻━┻
  
     cout << ans << "\n";
 }
+
+/* 
+curr = 0;
+        // (╯°□°）╯︵ ┻━┻
+        // for (auto ptr = time.begin(); ptr < time.end(); ptr++)
+        // {
+        //     pair<ll, ll> tem = *ptr;
+        //     if (tem.second >= curr)
+        //     {
+        //         curr = tem.first;
+        //         ans++;
+                
+        //         // remove this element
+                
+        //         time.erase(ptr);
+        //     }
+        // }
+*/
