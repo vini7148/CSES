@@ -11,6 +11,11 @@ int main()
     ll n, k;
     cin >> n >> k;
  
+    multiset<ll> en;
+
+    for (ll i = 0; i < k; i++)
+        en.insert(0);
+
     vector<pair<ll, ll>> time;
  
     for (int i = 0; i < n; i++)
@@ -24,21 +29,17 @@ int main()
  
     ll curr = 0, ans = 0;
  
-    for (int i = 0; i < k; i++)
+    for (auto ele : time)
     {
-        curr = 0;
-        for (auto ele : time)
-        {
-            if (ele.second >= curr)
-            {
-                curr = ele.first;
-                ans++;
-                
-                // remove this element
-                
-                time.erase(find(time.begin(), time.end(), ele));
-            }
-        }
+        auto it = en.upper_bound(ele.second);
+
+        if (it == en.begin())
+            continue;
+
+        it--;
+        ans++;
+        en.erase(it);
+        en.insert(ele.first);
     }// (╯°□°）╯︵ ┻━┻
  
     cout << ans << "\n";
