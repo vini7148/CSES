@@ -8,34 +8,32 @@ using namespace std;
 
 int main()
 {
-	ll n;
+    ll n;
     cin >> n;
-    vector<ll> par(n, -1);
+    vector<int> par(n, 0);
     for (int i = 1; i < n; i++)
     {
         cin >> par[i];
-        par[i] = par[i] - 1;
+        par[i] -= 1;
     }
-
-    // set each parent in the above part and count in the next part 
 
     vector<int> co(n, 0);
 
-    for (int i = 0; i < n; i++)
+    for (int i = n - 1; i > -1; i--)
     {
-        int st = n - i - 1;
-        int su = 0;
-        while (par[st] != -1)
+        int st = i, cou = 1;
+        while(st != par[st])
         {
-            co[st] += su;
-            su += 1;
+            co[st] += cou;
             st = par[st];
+            cou++;
         }
     }
 
-    cout << n - 1 << " ";
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         cout << co[i] << " ";
     }
+
+    cout << "\n";
 }

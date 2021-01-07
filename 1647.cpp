@@ -6,29 +6,29 @@
 
 using namespace std;
 
-struct node
-{
-    int data;
+// struct node
+// {
+//     int data;
 
-    node* next;
+//     node* next;
     
-    node()
-    {
-        data = INT_MAX;
-    }
-}
+//     node()
+//     {
+//         data = INT_MAX;
+//     }
+// };
 
-class tree
-{
-public:
+// class tree
+// {
+// public:
 
-    tree(int n)
-    {
+//     tree(int n)
+//     {
         
-    }
+//     }
 
 
-}
+// };
 
 int main()
 {
