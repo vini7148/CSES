@@ -1,62 +1,65 @@
 // https://cses.fi/problemset/task/1671
 
 #include <bits/stdc++.h>
-
-#define ll long long
-
+ 
+#define ll long long 
+ 
 using namespace std;
 
-int main ()
+vector<vector<pair<ll, ll> > > edges(100001);
+vector<bool> vi(100001, false);
+ 
+int main()
 {
     ll n, m;
     cin >> n >> m;
-
-    vector<vector<ll> > edges(100001);
-    ll wt[100000][100000] = { 0 };
-
-    for (ll i = 0 ; i < m; i++)
+    
+    for (ll i = 0; i < m; i++)
     {
-        ll x, y ,w;
-
+        ll x, y, w;
         cin >> x >> y >> w;
-
-        edges[x].push_back(y);
-        edges[y].push_back(x);
-
-        wt[x][y] = w;
-        wt[y][x] = w;
+ 
+        edges[x].push_back(make_pair(y, w));
+        // edges[y].push_back(make_pair(x, w));
     }
-
-    vector<ll> cost(100001, INT_MAX);
-    vector<ll> par(100001, -1);
-
-    cost[1] = 0;
-
-    queue<ll> Q;
-
-    Q.push(1);
-
-    while (!Q.empty())
+ 
+    // dij...
+    vector<ll> dist(100001, LLONG_MAX);
+    vector<ll> prev(100001, -1);
+ 
+    dist[1] = 0;
+    prev[1] = 0;
+ 
+    priority_queue<pair<ll, ll> , vector<pair<ll, ll> >, greater<pair<ll, ll> > > Q;
+    Q.push(make_pair(dist[1], 1));
+ 
+    while(!Q.empty())
     {
-        ll u = Q.front();
+        pair<ll, ll> u = Q.top();
         Q.pop();
 
-        for (ll i = 0; i < edges[u].size(); i++)
-        {
-            if (cost[edges[u][i]] > wt[u][edges[u][i]])
-            {
-                cost[edges[u][i]] = wt[u][edges[u][i]];
-                par[edges[u][i]] = u;
+        if(vi[u.second])
+            continue;
 
-                Q.push(edges[u][i]);
+        vi[u.second] = true;
+ 
+        for (ll i = 0; i < edges[u.second].size(); i++)
+        {
+            if (dist[edges[u.second][i].first] > dist[u.second] + edges[u.second][i].second && !vi[edges[u.second][i].first])
+            {
+                dist[edges[u.second][i].first] = dist[u.second] + edges[u.second][i].second;
+                prev[edges[u.second][i].first] = u.second;
+                Q.push(make_pair(dist[edges[u.second][i].first], edges[u.second][i].first));
             }
         }
     }
 
-    for (ll i = 2; i <= n; i++)
+    for (ll i = 1; i <= n; i++)
     {
-        cout << cost[i] << " ";
+        cout << dist[i] << " ";
     }
 
     cout << "\n";
+
+    return 0;
 }
