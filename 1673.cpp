@@ -1,6 +1,10 @@
 // https://cses.fi/problemset/task/1673
 
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
 
 #define ll long long 
 
