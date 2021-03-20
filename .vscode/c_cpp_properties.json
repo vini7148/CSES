@@ -17,7 +17,7 @@
             "intelliSenseMode": "gcc-x64"
         },
         {
-            "name": "Darwin",
+            "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**"
             ],
@@ -26,10 +26,25 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "/usr/bin/clang",
+            "compilerPath": "/opt/homebrew/bin/g++-10",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "clang-arm64"
+            "intelliSenseMode": "gcc-arm64"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4
