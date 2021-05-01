@@ -8,7 +8,7 @@ int main()
 {
     ifstream orig("orig.txt"), ne("new.txt");
 
-    ll i = 1;
+    ll i = 1, err = 0;
 
     while (!orig.eof())
     {
@@ -19,11 +19,14 @@ int main()
 
         if (a != b)
         {
-            cout << i << ": " << a << " " << b << "\n";
+            cout << i << ": " << a << "\t" << b << "\t: Diff = " << a - b << "\n";
+            err++;
         }
 
         i++;
     }
+
+    cout << "\nTotal number of Errors: " << err << "\n";
 
     orig.close();
     ne.close();
